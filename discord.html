@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webhook Test</title>
+    <style>
+        body{
+            background-image: url(LOL2.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            
+        }
+        #messageLabel {
+            font-size: 36px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        #messageInput {
+            width: 300px; /* Breite des Eingabefelds */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #submitButton {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="messageLabel">Schreib eine Nachricht</div>
+        <input type="text" id="messageInput" placeholder="Deine Nachricht eingeben">
+        <br>
+        <button id="submitButton" onclick="sendMessage()">Nachricht senden</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var message = document.getElementById("messageInput").value;
+
+            if (message.trim() === "") {
+                alert("Bitte eine Nachricht eingeben");
+                return;
+            }
+
+            var webhookUrl = "https://discord.com/api/webhooks/1146865405462331552/yN1oZmjN_yTM_y0DVvhNdNfBAAgrHwKuMv1WTbC2MkAdp5SI02jO5uM21j-bW1bFhPxn"; 
+
+            var ipAddress = ""; 
+
+            var data = {
+                content: `Nachricht von: ${ipAddress}\n${message}`
+            };
+
+            fetch(webhookUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Nachricht erfolgreich gesendet");
+                } else {
+                    alert("Fehler beim Senden der Nachricht");
+                }
+            })
+            .catch(error => {
+                console.error("Fehler:", error);
+                alert("Fehler beim Senden der Nachricht");
+            });
+        }
+    </script>
+</body>
+</html>
