@@ -17,18 +17,18 @@
         }
         .container {
             text-align: center;
-            
+            size: 20%;
         }
         #messageLabel {
-            font-size: 36px;
-            color: white;
-            margin-bottom: 20px;
+            font-size: 100px;
+            margin-bottom: 5px;
+            color: #fff;
         }
         #messageInput {
             width: 300px; /* Breite des Eingabefelds */
             padding: 10px;
             font-size: 16px;
-            border: 1px solid #ccc;
+            border: 1px solid #ffffff;
             border-radius: 4px;
         }
         #submitButton {
@@ -60,9 +60,10 @@
                 return;
             }
 
-            var webhookUrl = "https://discord.com/api/webhooks/1146865405462331552/yN1oZmjN_yTM_y0DVvhNdNfBAAgrHwKuMv1WTbC2MkAdp5SI02jO5uM21j-bW1bFhPxn"; 
+            var webhookUrl = "DEIN_DISCORD_WEBHOOK_URL"; // Hier deine eigene Discord Webhook-URL einfügen
 
-        
+            var data = {
+                content: message
             };
 
             fetch(webhookUrl, {
@@ -87,3 +88,4 @@
     </script>
 </body>
 </html>
+
